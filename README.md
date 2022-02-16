@@ -18,3 +18,14 @@ Also make sure you are using Node@^16.6
 ```bash
 node .
 ```
+
+## Commands
+
+### Creating commands
+```bash
+cp sample/command.ts src/commands/mycommand.ts
+```
+
+### Existing commands
+* **General**
+  * `help [command | category]` - Displays the help message.

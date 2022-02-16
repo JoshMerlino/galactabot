@@ -22,7 +22,7 @@ Bot.login().then(async function(client) {
 	console.info("Logged in as", chalk.cyan(client.user.tag));
 
 	// Add the commands to the bot context
-	const commandContexts = await asyncRequireContext<{ default: typeof BaseCommand }>(path.resolve("./lib/command"), true, /\.js$/)
+	const commandContexts = await asyncRequireContext<{ default: typeof BaseCommand }>(path.resolve("./lib/commands"), true, /\.js$/)
 		.catch(function(error) {
 			console.error(error);
 			return [];
@@ -56,13 +56,13 @@ Bot.login().then(async function(client) {
 			if (!command) return;
 
 			// Execute the command
-			await command.message(message).exec(root, ...args);
+			await command.setMessage(message).exec(root, ...args);
 
 			return;
 		}
 
 		// Get guild configuration
-		const config = new ConfigurationManager(message.guild);
+		const config = new ConfigurationManager(message.guild.id);
 
 		// Get prefix from config
 		const prefix = config.get<string>("prefix");
@@ -88,7 +88,7 @@ Bot.login().then(async function(client) {
 		if (!command) return;
 
 		// Execute the command
-		await command.message(message).exec(root, ...args);
+		await command.setMessage(message).exec(root, ...args);
 
 	});
 
