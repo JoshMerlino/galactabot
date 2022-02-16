@@ -32,7 +32,6 @@ rules:
   no-duplicate-case: error
   no-empty: warn
   no-extra-boolean-cast: error
-  no-extra-parens: warn
   no-extra-semi: warn
   no-func-assign: error
   no-import-assign: error

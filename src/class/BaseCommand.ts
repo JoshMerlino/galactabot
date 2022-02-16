@@ -50,7 +50,7 @@ export default class BaseCommand {
     protected async sendUsage(): Promise<void> {
     	const root = this.message?.content.split(" ")[0];
     	const embed = this.createEmbed();
-    	embed.setColor(Color.WARN);
+    	embed.setColor(Color.INVALID);
     	embed.setDescription(`Usage: \`${root} ${this.usage}\``);
     	await this.channel?.send({ embeds: [ embed ]});
     }
@@ -61,12 +61,15 @@ export default class BaseCommand {
     	if (!this.author) throw new Error("Author is not set");
 
     	const embed = new MessageEmbed;
-    	embed.setAuthor({
-    		name: this.author.tag,
-    		iconURL: this.author.avatarURL()!
-    	});
+    	embed.setFooter({ text: this.author.tag, iconURL: this.author.displayAvatarURL() });
+    	embed.setTimestamp();
     	embed.setColor(Color.DEFAULT);
     	return embed;
+    }
+
+    // Method to send a message to the channel
+    protected async send(embed: MessageEmbed): Promise<Message | undefined> {
+    	return await this.channel?.send({ embeds: [ embed ]});
     }
 
 }

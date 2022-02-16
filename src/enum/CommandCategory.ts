@@ -1,10 +1,10 @@
 declare const enum CommandCategory {
-    GENERAL,
-    FUN,
-    MODERATION,
-    UTILITY,
-    ADMIN,
-    MUSIC,
-    NSFW,
-    EMOJI,
+    GENERAL = "General",
+    FUN = "Fun",
+    MODERATION = "Moderation",
+    UTILITY = "Utility",
+    ADMIN = "Admin",
+    MUSIC = "Music",
+    NSFW = "NSFW",
+    EMOJI = "Emoji",
 }

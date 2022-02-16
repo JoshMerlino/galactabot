@@ -56,7 +56,7 @@ Bot.login().then(async function(client) {
 			if (!command) return;
 
 			// Execute the command
-			await command.setMessage(message).exec(root, ...args);
+			await command.setMessage(message).exec(...args);
 
 			return;
 		}
@@ -88,7 +88,7 @@ Bot.login().then(async function(client) {
 		if (!command) return;
 
 		// Execute the command
-		await command.setMessage(message).exec(root, ...args);
+		await command.setMessage(message).exec(...args);
 
 	});
 
