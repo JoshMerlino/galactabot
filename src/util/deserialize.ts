@@ -2,15 +2,15 @@ import { AnyChannel, Role, User } from "discord.js";
 import Bot from "../class/Bot";
 
 // Clean up some typedefs
-export type Argument = string | User | Role | AnyChannel;
+export type CommandArgument = string | User | Role | AnyChannel;
 
-export default function deserialize(command: string): Argument[] {
+export default function deserialize(command: string): CommandArgument[] {
 
 	// Start parsing the command
 	const [ root, ...rawArgs ] = command.split(" ");
 
 	// Initialize list of args
-	const args: Argument[] = [];
+	const args: CommandArgument[] = [];
 
 	// Iterate over raw args
 	rawArgs.map(function(arg) {

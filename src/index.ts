@@ -6,7 +6,6 @@ import path from "path";
 import BaseCommand from "./class/BaseCommand";
 import Bot from "./class/Bot";
 import ConfigurationManager from "./class/ConfigurationManager";
-import Help from "./command/Help";
 import console from "./console";
 import deserialize from "./util/deserialize";
 
@@ -23,7 +22,11 @@ Bot.login().then(async function(client) {
 	console.info("Logged in as", chalk.cyan(client.user.tag));
 
 	// Add the commands to the bot context
-	const commandContexts = await asyncRequireContext<{ default: typeof BaseCommand }>(path.resolve("./lib/command"), true, /\.js$/);
+	const commandContexts = await asyncRequireContext<{ default: typeof BaseCommand }>(path.resolve("./lib/command"), true, /\.js$/)
+		.catch(function(error) {
+			console.error(error);
+			return [];
+		});
 	commandContexts.map(command => Bot.commands.push(new command.module.default));
 
 	// On a message, attempt to process commands
@@ -43,8 +46,8 @@ Bot.login().then(async function(client) {
 
 			// Narrow the list of commands down
 			const commands = Bot.commands
-				.filter(command => command.executionPreferences.includes("DIRECT"))
-				.filter(command => command.aliases.includes(root));
+				.filter(command => command.executionPreferences.includes(ExecutionPreference.DIRECT))
+				.filter(command => command.aliases.map(a => a.toLowerCase()).includes(root.toLowerCase()));
 
 			// Get the command
 			const [ command ] = commands;
@@ -53,7 +56,7 @@ Bot.login().then(async function(client) {
 			if (!command) return;
 
 			// Execute the command
-			await command.onCommand(root, ...args);
+			await command.message(message).exec(root, ...args);
 
 			return;
 		}
@@ -75,8 +78,8 @@ Bot.login().then(async function(client) {
 
 		// Narrow the list of commands down
 		const commands = Bot.commands
-			.filter(command => command.executionPreferences.includes("GUILD"))
-			.filter(command => command.aliases.includes(root));
+			.filter(command => command.executionPreferences.includes(ExecutionPreference.GUILD))
+			.filter(command => command.aliases.map(a => a.toLowerCase()).includes(root.toLowerCase()));
 
 		// Get the command
 		const [ command ] = commands;
@@ -85,7 +88,7 @@ Bot.login().then(async function(client) {
 		if (!command) return;
 
 		// Execute the command
-		await command.onCommand(root, ...args);
+		await command.message(message).exec(root, ...args);
 
 	});
 
