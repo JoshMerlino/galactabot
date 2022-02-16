@@ -31,7 +31,7 @@ export default class Command extends BaseCommand {
 
 			// Iterate over categories
 			Object.keys(categories).map(category => {
-				embed.addField(category, `\`${prefix}${this.aliases[0]} ${category.toLowerCase()}]\` (${categories[category]} commands)`);
+				embed.addField(category, `\`${prefix}${this.aliases[0]} ${category.toLowerCase()}\` (${categories[category]} commands)`);
 			});
 
 			// Respond

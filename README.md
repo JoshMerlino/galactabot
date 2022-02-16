@@ -28,4 +28,4 @@ cp sample/command.ts src/commands/mycommand.ts
 
 ### Existing commands
 * **General**
-  * `help [command | category]` - Displays the help message.
+  * `help [category]` - Displays the help message.
