@@ -2,5 +2,5 @@ lib/
 node_modules/
 pnpm-lock.yaml
 .env
-data/*
+storage/*
 !data/_default
