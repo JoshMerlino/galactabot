@@ -1,5 +1,5 @@
-import BaseCommand from "../src/class/BaseCommand";
-import { CommandArgument } from "../src/util/deserialize";
+import BaseCommand from "../class/BaseCommand";
+import { CommandArgument } from "../util/deserialize";
 
 /*
  * Every command must extend BaseCommand.
