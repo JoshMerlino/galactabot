@@ -42,6 +42,13 @@ export default class Command extends BaseCommand {
 	];
 
 	/*
+	 * The command's usage.
+	 * Specifys the syntax of the command.
+	 * This is an optional property.
+	 */
+	usage = "";
+
+	/*
 	 * The command's handler.
 	 * Specifys the internal logic of the command.
 	 * This is a required property.

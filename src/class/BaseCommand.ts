@@ -10,9 +10,11 @@ export default class BaseCommand {
     	ExecutionPreference.GUILD
     ];
 
+    public category = CommandCategory.GENERAL;
+
     public description = "";
 
-    public category = CommandCategory.GENERAL;
+    public usage = "";
 
     protected channel?: AnyChannel;
 
