@@ -10,6 +10,9 @@
         "type": "git",
         "url": "https://github.com/JoshMerlino/ts-package.git"
     },
+    "engines": {
+        "node": "16x"
+    },
     "scripts": {
         "watch-ts": "tsc -w",
         "watch-js": "nodemon .",
