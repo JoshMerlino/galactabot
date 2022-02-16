@@ -12,3 +12,9 @@ Ensure you have the following environment variables.
 ```
 DISCORD_TOKEN = ...
 ```
+
+Also make sure you are using Node@^16.6
+
+```bash
+node .
+```
