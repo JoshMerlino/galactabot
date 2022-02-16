@@ -46,6 +46,9 @@ export default class Command extends BaseCommand {
 			// Get the commands that match the category.
 			const commands = Bot.commands.filter(c => c.category.toLowerCase().includes((<string>args[0]).toLowerCase()));
 
+			// Change title
+			embed.setTitle(`${commands.length} Commands • Help • GalactaBot`);
+
 			// If commands were found
 			if (commands.length > 0) {
 
