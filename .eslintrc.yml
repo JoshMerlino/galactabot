@@ -91,7 +91,6 @@ rules:
   yoda: warn
   strict: error
   array-bracket-spacing: [warn, always]
-  brace-style: warn
   capitalized-comments: warn
   comma-dangle: warn
   comma-spacing: warn

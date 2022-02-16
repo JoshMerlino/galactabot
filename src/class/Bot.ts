@@ -1,4 +1,5 @@
 import { Client, Intents } from "discord.js";
+import BaseCommand from "./BaseCommand";
 
 export default class Bot {
 
@@ -7,19 +8,19 @@ export default class Bot {
 
     // Initialize client
     public static client = new Client({
-    	intents: [
-    		Intents.FLAGS.GUILDS,
-    		Intents.FLAGS.GUILD_MESSAGES,
-    		Intents.FLAGS.GUILD_MEMBERS
-    	]
+    	intents: Object.values(Intents.FLAGS),
+    	partials: [ "CHANNEL" ]
     });
 
-    // Method to log the bot in
-    public static login(): Promise<Client> {
+	// Initialize list of commands
+	public static commands: BaseCommand[] = [];
+
+	// Method to log the bot in
+	public static login(): Promise<Client> {
     	return new Promise<Client>(resolve => {
     		Bot.client.on("ready", resolve);
     		Bot.client.login(process.env.DISCORD_TOKEN);
     	});
-    }
+	}
 
 }
