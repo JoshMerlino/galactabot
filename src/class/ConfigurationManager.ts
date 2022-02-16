@@ -38,7 +38,7 @@ export default class ConfigurationManager {
     }
 
     // Get config value
-    get<T>(key: string): T {
+    get<T = unknown>(key: string): T {
     	return <T> (this.__store[key] || ConfigurationManager.DEFAULT[key]);
     }
 
