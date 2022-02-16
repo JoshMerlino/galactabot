@@ -12,7 +12,7 @@ export default class BaseCommand {
 
     public description = "";
 
-    public category = CommandCategory.__ROOT__;
+    public category = CommandCategory.GENERAL;
 
     protected channel?: AnyChannel;
 
