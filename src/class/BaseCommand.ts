@@ -1,4 +1,4 @@
-import { AnyChannel, DMChannel, Guild, Message, MessageEmbed, TextChannel, User } from "discord.js";
+import { AnyChannel, DMChannel, Guild, Message, MessageEmbed, PermissionString, TextChannel, User } from "discord.js";
 import { CommandArgument } from "../util/deserialize";
 import ConfigurationManager from "./ConfigurationManager";
 
@@ -70,6 +70,20 @@ export default class BaseCommand {
     // Method to send a message to the channel
     protected async send(embed: MessageEmbed): Promise<Message | undefined> {
     	return await this.channel?.send({ embeds: [ embed ]});
+    }
+
+    protected async hasPermission(permission: PermissionString): Promise<boolean> {
+
+    	if (this.channel?.type === "DM") return true;
+    	if (this.message?.member?.permissions.has(permission)) return true;
+
+    	const embed = this.createEmbed();
+    	embed.setColor(Color.ERROR);
+    	embed.setTitle("No permissions");
+    	embed.setDescription(`This command requires you have the \`${permission}\` permission.`);
+    	this.send(embed);
+
+    	return false;
     }
 
 }
