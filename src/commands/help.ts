@@ -24,10 +24,13 @@ export default class Command extends BaseCommand {
 
 			// Add categories
 			const categories: Record<string, number> = {};
-			Bot.commands.map(command => {
-				if (!categories[command.category]) categories[command.category] = 0;
-				categories[command.category]++;
-			});
+			Bot.commands
+				.filter(command => command.aliases.length > 0)
+				.filter(command => command.description.length > 0)
+				.map(command => {
+					if (!categories[command.category]) categories[command.category] = 0;
+					categories[command.category]++;
+				});
 
 			// Iterate over categories
 			Object.keys(categories).map(category => {
@@ -44,7 +47,10 @@ export default class Command extends BaseCommand {
 		if (typeof args[0] === "string") {
 
 			// Get the commands that match the category.
-			const commands = Bot.commands.filter(c => c.category.toLowerCase().includes((<string>args[0]).toLowerCase()));
+			const commands = Bot.commands
+				.filter(c => c.category.toLowerCase().includes((<string>args[0]).toLowerCase()))
+				.filter(command => command.aliases.length > 0)
+				.filter(command => command.description.length > 0);
 
 			// Change title
 			embed.setTitle(`${commands.length} Commands • Help • GalactaBot`);
