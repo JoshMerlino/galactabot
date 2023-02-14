@@ -21,7 +21,7 @@
         "build": "tsc"
     },
     "devDependencies": {
-        "@types/mkdirp": "^1.0.2",
+        "@types/mkdirp": "^2.0.0",
         "@types/node": "^18.13.0",
         "@typescript-eslint/eslint-plugin": "^5.52.0",
         "@typescript-eslint/parser": "^5.52.0",
