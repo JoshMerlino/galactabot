@@ -24,7 +24,7 @@
         "@types/mkdirp": "^2.0.0",
         "@types/node": "^20.10.4",
         "@typescript-eslint/eslint-plugin": "^6.14.0",
-        "@typescript-eslint/parser": "^6.13.2",
+        "@typescript-eslint/parser": "^6.14.0",
         "concurrently": "^8.2.2",
         "eslint": "^8.55.0",
         "nodemon": "^3.0.2",
