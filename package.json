@@ -35,7 +35,7 @@
         "async-require-context": "^1.8.15",
         "chalk": "^5.0.1",
         "discord.js": "^14.14.1",
-        "dotenv": "^16.4.1",
+        "dotenv": "^16.4.2",
         "mkdirp": "^3.0.1"
     }
 }
