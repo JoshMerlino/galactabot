@@ -34,7 +34,7 @@
     "dependencies": {
         "async-require-context": "^1.8.15",
         "chalk": "^5.0.1",
-        "discord.js": "^14.15.3",
+        "discord.js": "^14.16.1",
         "dotenv": "^16.4.5",
         "mkdirp": "^3.0.1"
     }
